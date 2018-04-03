@@ -1,2 +1,2 @@
 #!/bin/bash
-system_profiler SPHardwareDataType | grep Model\ ID | cut -d : -f2 | sed 's/^ *//'
+system_profiler SPHardwareDataType | grep "Model Id" | cut -d : -f2 | sed 's/^ *//'
