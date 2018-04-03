@@ -20,7 +20,7 @@ get_cpu_id() {
 
 # 4.OCS
 get_cpu_speed() {
-	sp=$[`sysctl -a | grep hw.cpufrequency: | cut -d: -f2 | sed 's/^ *//'` / 1000000]
+	sp=`system_profiler SPHardwareDataType | grep "Processor Speed" | cut -d : -f2 | sed 's/^ *//'`
 	export SPEED=`echo $sp`
 }
 
