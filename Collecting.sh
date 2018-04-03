@@ -101,8 +101,8 @@ echo $CORES >> FULL.query.sql
 echo $L2CACHESIZE >> FULL.query.sql
 echo $CPUARCH >> FULL.query.sql
 echo $DATA_WIDTH >> FULL.query.sql
-echo $CURRENT_ADDRESS_WIDTH >> FULL.query.sql
+#echo $CURRENT_ADDRESS_WIDTH >> FULL.query.sql
 echo $LOGICAL_CPUS >> FULL.query.sql
 echo $VOLTAGE >> FULL.query.sql
-echo $CURRENT_SPEED >> FULL.query.sql
-echo $SOCKET >> FULL.query.sql
+#echo $CURRENT_SPEED >> FULL.query.sql
+#echo $SOCKET >> FULL.query.sql
