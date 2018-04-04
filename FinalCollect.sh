@@ -8,7 +8,8 @@ get_cpu_mnfct() {
 
 # 2.OCS Get CPU Type, Model and Frecuency. Global data
 get_cpu_type() {
-	t=`sysctl -a | grep -i brand | cut -d: -f2 | head -1 | tr -d '[:blank:]'`
+	#t=`sysctl -a | grep -i brand | cut -d: -f2 | head -1 | tr -d '[:blank:]'`
+	t=`sysctl -a | grep -i brand | cut -d: -f2 | head -1 `
 	export TYPE=`echo $t`
 }
 
@@ -20,7 +21,7 @@ get_cpu_id() {
 
 # 4.OCS
 get_cpu_speed() {
-	sp=`system_profiler SPHardwareDataType | grep "Processor Speed" | cut -d : -f2 | sed 's/^ *//'`
+	sp=`system_profiler SPHardwareDataType | grep "Processor Speed" | cut -d : -f2 | sed 's/^ *//' | tr -d '[:blank:]'`
 	export SPEED=`echo $sp`
 }
 
@@ -32,7 +33,7 @@ get_cpu_cores() {
 
 # 6.OCS
 get_cpu_cachedos() {
-	eledos=`system_profiler SPHardwareDataType | grep -E "Cache" | cut -d : -f2 | sed 's/^ *//'`
+	eledos=`system_profiler SPHardwareDataType | grep -E "Cache" | cut -d : -f2 | sed 's/^ *//' | tr -d '[:blank:]'`
 	export L2CACHESIZE=`echo $eledos`
 }
 
@@ -61,12 +62,12 @@ get_cpu_logical() {
 
 # 11.OCS
 get_cpu_volts() {
-	v=`dmidecode 2>&1 | grep Voltage | cut -d: -f2 | head -1 | sed 's/^ *//'`
+	v=`dmidecode 2>&1 | grep Voltage | cut -d: -f2 | head -1 | sed 's/^ *//'| tr -d '[:blank:]'`
 	export VOLTAGE=`echo $v`
 }
 
 get_bus_speed() {
-	b=`system_profiler SPHardwareDataType | grep Bus | cut -d : -f2 | sed 's/^ *//'`
+	b=`system_profiler SPHardwareDataType | grep Bus | cut -d : -f2 | sed 's/^ *//'| tr -d '[:blank:]'`
 	export BUS_SPEED=`echo $b`
 }
 
@@ -131,13 +132,23 @@ get_smc
 #get_cpu_socket
 
 
-declare -a INFO=($MANUFACTURER $TYPE $SERIALNUMBER $SPEED $CORES "$L2CACHESIZE" $CPUARCH $DATA_WIDTH $LOGICAL_CPUS "$VOLTAGE" "$BUS_SPEED" "$MODEL_ID" "$MODEL_NAME" $ROM $SERIAL $SMC);
+declare -a INFO=("\`$MANUFACTURER\`" "\`$TYPE\`" "\`$SERIALNUMBER\`" "\`$SPEED\`" "\`$CORES\`" "\`$L2CACHESIZE\`" "\`$CPUARCH\`" "\`$DATA_WIDTH\`" "\`$LOGICAL_CPUS\`" "\`$VOLTAGE\`" "\`$BUS_SPEED\`" "\`$MODEL_ID\`" "\`$MODEL_NAME\`" "\`$ROM\`" "\`$SERIAL\`" "\`$SMC\`");
 #echo ${#INFO[@]} #Number of elements in the array
 #echo ${#INFO}  #Number of characters in the first element of the array
-#echo ${INFO[@]} #SHOW ALL INFO IN LINE
+#echo ${INFO[@]}
+#echo ${INFO[@]/#/\`} #PREFIX
+#echo ${INFO[@]/%/,} # CONTENT
+echo ${INFO[@]/%/,}
 
-for t in "${INFO[@]}"
-do
-echo $t
-done
-echo "esto es todo!"
+
+#echo ""
+#echo ""
+#sleep 1
+#for t in "${INFO[@]}"
+#do
+#echo $t
+#done
+#echo "esto es todo!"
+
+#for t in "${INFO[@]}"
+#printf "%s\n" "${INFO[@]}"
