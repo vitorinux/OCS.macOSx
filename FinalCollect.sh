@@ -45,7 +45,8 @@ get_cpu_arch() {
 
 # 8.OCS
 get_cpu_data_width() {
-	dw=`sysctl -a | grep machdep.cpu.tlb.data.large_level1: | cut -d: -f2 | sed 's/^ *//'`
+	dw=`sysctl -a | grep machdep.cpu.arch_perf.width | cut -d: -f2 | sed 's/^ *//'`
+	#dw=`sysctl -a | grep machdep.cpu.tlb.data.large_level1: | cut -d: -f2 | sed 's/^ *//'`
 	export DATA_WIDTH=`echo $dw`
 }
 
