@@ -133,7 +133,7 @@ get_smc
 #get_cpu_socket
 
 
-declare -a INFO=("\`$MANUFACTURER\`" "\`$TYPE\`" "\`$SERIALNUMBER\`" "\`$SPEED\`" "\`$CORES\`" "\`$L2CACHESIZE\`" "\`$CPUARCH\`" "\`$DATA_WIDTH\`" "\`$LOGICAL_CPUS\`" "\`$VOLTAGE\`" "\`$BUS_SPEED\`" "\`$MODEL_ID\`" "\`$MODEL_NAME\`" "\`$ROM\`" "\`$SERIAL\`" "\`$SMC\`");
+declare -a INFO=("'$MANUFACTURER'" "'$TYPE'" "'$SERIALNUMBER'" "'$SPEED'" "'$CORES'" "'$L2CACHESIZE'" "'$CPUARCH'" "'$DATA_WIDTH'" "'$LOGICAL_CPUS'" "'$VOLTAGE'" "'$BUS_SPEED'" "'$MODEL_ID'" "'$MODEL_NAME'" "'$ROM'" "'$SERIAL'" "'$SMC'")
 #echo ${#INFO[@]} #Number of elements in the array
 #echo ${#INFO}  #Number of characters in the first element of the array
 #echo ${INFO[@]}
@@ -152,7 +152,7 @@ echo ${INFO[9]/%/,}
 echo ${INFO[10]/%/,}
 echo ${INFO[11]/%/,}
 echo ${INFO[12]/%/,}
-echo ${INFO[13]/%/,}
+#echo ${INFO[13]/%/,}
 echo ${INFO[14]/%/,}
 echo ${INFO[15]/%/;}
 #echo ${INFO[16]/%/;}
