@@ -82,10 +82,10 @@ get_model_name() {
 	export MODEL_NAME=`echo $min`
 }
 
-get_rom() {
-	r=`system_profiler SPHardwareDataType | grep ROM | cut -d : -f2 | sed 's/^ *//'`
-	export ROM=`echo $r`
-}
+#get_rom() {
+#	r=`system_profiler SPHardwareDataType | grep ROM | cut -d : -f2 | sed 's/^ *//'`
+#	export ROM=`echo $r`
+#}
 
 get_serial() {
 	sr=`system_profiler SPHardwareDataType | grep Serial | cut -d : -f2 | sed 's/^ *//'`
@@ -126,7 +126,7 @@ get_cpu_volts
 get_bus_speed
 get_model_id
 get_model_name
-get_rom
+#get_rom
 get_serial
 get_smc
 #get_cpu_cur_speed
@@ -134,7 +134,7 @@ get_smc
 
 
 declare -a INFO=("\`$MANUFACTURER\`" "\`$TYPE\`" "\`$SERIALNUMBER\`" "\`$SPEED\`" "\`$CORES\`" "\`$L2CACHESIZE\`" "\`$CPUARCH\`" "\`$DATA_WIDTH\`" "\`$LOGICAL_CPUS\`" "\`$VOLTAGE\`" "\`$BUS_SPEED\`" "\`$MODEL_ID\`" "\`$MODEL_NAME\`" "\`$ROM\`" "\`$SERIAL\`" "\`$SMC\`");
-echo ${#INFO[@]} #Number of elements in the array
+#echo ${#INFO[@]} #Number of elements in the array
 #echo ${#INFO}  #Number of characters in the first element of the array
 #echo ${INFO[@]}
 #echo ${INFO[@]/#/\`} #PREFIX
